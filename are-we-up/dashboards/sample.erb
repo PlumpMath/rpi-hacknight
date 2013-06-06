@@ -1,17 +1,37 @@
 <% content_for(:title) { "My super sweet dashboard" } %>
+
+<script type='text/javascript'>
+$(function() {
+Dashing.gridsterLayout('[{"col":3,"row":1,"size_x":1,"size_y":1},{"col":4,"row":1,"size_x":1,"size_y":1},{"col":3,"row":2,"size_x":2,"size_y":1},{"col":1,"row":2,"size_x":2,"size_y":1},{"col":1,"row":1,"size_x":1,"size_y":1},{"col":2,"row":1,"size_x":1,"size_y":1}]')
+});
+</script>
 <div class="gridster">
   <ul>
+    <!-- jenkins widgets -->
+    <li data-row="1" data-col="2" data-sizex="1" data-sizey="1">
+      <div data-id="jenkins_jobstates" data-view="Jenkins_Jobstates" data-title="Jenkins Jobstates"></div>
+    </li>
+
+    <li data-row="1" data-col="3" data-sizex="1" data-sizey="1">
+      <div data-id="jenkins_weather" data-view="Jenkins_Weather" data-title="Jenkins Weather"></div>
+    </li>
+
+    <li data-row="2" data-col="2" data-sizex="2" data-sizey="1">
+      <div data-id="jenkins_jobs" data-view="Jenkins_Jobs" data-title="Jenkins Jobs" data-cols="8"></div>
+    </li>
+
+    <!-- load time widgets -->
     <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
       <div data-id="sprd.index.load" data-view="Number" data-title="sprd homepage load time"
         data-moreinfo="in ms" data-prefix=""></div>
     </li>
 
-    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
       <div data-id="sprd.list.load" data-view="Number" data-title="sprd listpage load time"
         data-moreinfo="in ms" data-prefix=""></div>
     </li>
 
-    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
       <div data-id="sprd.api.search" data-view="Number" data-title="api search time"
         data-moreinfo="in ms" data-prefix=""></div>
     </li>
