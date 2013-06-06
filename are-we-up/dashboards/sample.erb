@@ -5,6 +5,16 @@
       <div data-id="sprd.index.load" data-view="Number" data-title="sprd homepage load time"
         data-moreinfo="in ms" data-prefix=""></div>
     </li>
+
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-id="sprd.list.load" data-view="Number" data-title="sprd listpage load time"
+        data-moreinfo="in ms" data-prefix=""></div>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-id="sprd.api.search" data-view="Number" data-title="api search time"
+        data-moreinfo="in ms" data-prefix=""></div>
+    </li>
   </ul>
   <center><div style="font-size: 12px">Try this: curl -d '{ "auth_token": "YOUR_AUTH_TOKEN", "text": "Hey, Look what I can do!" }' \http://<%=request.host%>:<%=request.port%>/widgets/welcome</div></center>
 </div>
