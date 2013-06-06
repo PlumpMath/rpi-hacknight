@@ -1,0 +1,48 @@
+// ----------------------------------------------------------------------------
+// Widget-jenkins-jobs styles
+// ----------------------------------------------------------------------------
+.widget-jenkins-jobs {
+  background-color: lightgrey;
+  padding-bottom: 0px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+
+  .title {
+    color: black;
+  }
+
+  .job {
+    border-radius: 8px;
+    float: left;
+    padding: 4px 0px;
+  }
+
+  .job[data-state="blue"] {
+    background-color: green;
+  }
+
+  .job[data-state="red"] {
+    background-color: red;
+  }
+
+  .job[data-state="grey"] {
+    background-color: grey;
+  }
+
+  .job span {
+    padding: 0px 4px;
+  }
+}
+
+.widget-jenkins-jobs {
+  .job {
+    margin-bottom: 1%;
+    margin-left: 1%;
+    min-width: 23.75%;
+  }
+
+  .job:nth-child(4n + 1) {
+    clear: left;
+  }
+}
+
