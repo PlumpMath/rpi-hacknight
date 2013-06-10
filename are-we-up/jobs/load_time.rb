@@ -51,7 +51,12 @@ end
 
 SCHEDULER.every '10s' do |j|
   TimedRequest.browse('sprd.index.load', 'http://spreadshirt.de')
-  TimedRequest.browse('sprd.list.load', 'http://spreadshirt.de/-C4407')
+end
 
+SCHEDULER.every '10s' do
+  TimedRequest.browse('sprd.list.load', 'http://spreadshirt.de/-C4407')
+end
+
+SCHEDULER.every '10s' do
   TimedRequest.get('sprd.api.search', "http://api.spreadshirt.net/api/v1/shops/205909/articles?query=#{Dict.random}")
 end
