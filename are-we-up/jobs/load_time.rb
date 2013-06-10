@@ -36,9 +36,8 @@ class TimedRequest
     timed(name) { get_redirected(URI(url)) }
   end
 
-    time = fi - st
-    send_event(widget, { current: time, last: @@req_times[widget] || 0 })
-    @@req_times[widget] = time
+  def self.browse(name, url)
+    timed(name) { `phantomjs scripts/load.js #{url}`; nil }
   end
 end
 
@@ -51,8 +50,8 @@ class Dict
 end
 
 SCHEDULER.every '10s' do |j|
-  TimedRequest.get('sprd.index.load', 'http://spreadshirt.de')
-  TimedRequest.get('sprd.list.load', 'http://spreadshirt.de/-C4407')
+  TimedRequest.browse('sprd.index.load', 'http://spreadshirt.de')
+  TimedRequest.browse('sprd.list.load', 'http://spreadshirt.de/-C4407')
 
   TimedRequest.get('sprd.api.search', "http://api.spreadshirt.net/api/v1/shops/205909/articles?query=#{Dict.random}")
 end
