@@ -1,0 +1,3 @@
+[submodule "raspberrypitv"]
+	path = raspberrypitv
+	url = git://github.com/tklae/RaspberryPiTV
