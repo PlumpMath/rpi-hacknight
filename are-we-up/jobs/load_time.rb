@@ -23,10 +23,18 @@ end
 class TimedRequest
   @@req_times = {}
 
-  def self.get(widget, url)
+  def self.timed(name, &block)
     st = Time.new.to_ms
-    res = get_redirected(URI(url))
+    time = block.call
     fi = Time.new.to_ms
+    time = if time.is_a? Numeric then time else fi - st end
+    send_event(name, { current: time, last: @@req_times[name] || 0 })
+    @@req_times[name] = time
+  end
+
+  def self.get(name, url)
+    timed(name) { get_redirected(URI(url)) }
+  end
 
     time = fi - st
     send_event(widget, { current: time, last: @@req_times[widget] || 0 })
