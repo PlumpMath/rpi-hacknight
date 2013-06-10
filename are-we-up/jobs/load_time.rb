@@ -42,7 +42,7 @@ class Dict
   end
 end
 
-SCHEDULER.every '1s' do |j|
+SCHEDULER.every '10s' do |j|
   TimedRequest.get('sprd.index.load', 'http://spreadshirt.de')
   TimedRequest.get('sprd.list.load', 'http://spreadshirt.de/-C4407')
 
