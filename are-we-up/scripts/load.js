@@ -9,4 +9,5 @@ page.open(sys.args[1], function(status) {
 	if (status !== 'success') {
 		console.log("failed to load " + sys.args[1]);
 	}
+	phantom.exit();
 });
