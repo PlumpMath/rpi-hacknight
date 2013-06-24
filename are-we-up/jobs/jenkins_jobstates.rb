@@ -1,15 +1,12 @@
 require 'net/http'
 require 'json'
 
-jenkins_host = 'https://build.spreadomat.net'
-jenkins_view = 'RampantTree'
-
 SCHEDULER.every '2m', :first_in => 0 do
-  uri = URI.parse(jenkins_host)
+  uri = URI.parse(settings.jenkins_host)
   http = Net::HTTP.new(uri.host, uri.port)
   http.use_ssl = true
   http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-  url  = '/jenkins/view/%s/api/json?tree=jobs[color]' % jenkins_view
+  url  = '/jenkins/view/%s/api/json?tree=jobs[color]' % settings.jenkins_view
 
   request = Net::HTTP::Get.new(url)
   request.basic_auth(settings.user, settings.pw)

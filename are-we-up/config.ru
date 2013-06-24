@@ -4,6 +4,8 @@ configure do
   set :auth_token, 'YOUR_AUTH_TOKEN'
   set :user, 'USER'
   set :pw, 'PW'
+  set :jenkins_host, 'https://jenkins.example.org'
+  set :jenkins_view, 'All'
 
   helpers do
     def protected!
