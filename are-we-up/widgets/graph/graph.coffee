@@ -1,10 +1,12 @@
 class Dashing.Graph extends Dashing.Widget
 
   @accessor 'current', ->
-    return @get('displayedValue') if @get('displayedValue')
     points = @get('points')
-    if points
-      points[points.length - 1].y
+    points[points.length - 1].y if points
+
+  @accessor 'last', ->
+    points = @get('points')
+    points[points.length - 2].y if points
 
   ready: ->
     container = $(@node).parent()
@@ -28,6 +30,20 @@ class Dashing.Graph extends Dashing.Widget
     x_axis = new Rickshaw.Graph.Axis.Time(graph: @graph)
     y_axis = new Rickshaw.Graph.Axis.Y(graph: @graph, tickFormat: Rickshaw.Fixtures.Number.formatKMBT)
     @graph.render()
+
+  @accessor 'difference', ->
+    if @get('last')
+      last = parseInt(@get('last'))
+      current = parseInt(@get('current'))
+      if last != 0
+        diff = Math.abs(Math.round((current - last) / last * 100))
+        "#{diff}%"
+    else
+      ""
+
+  @accessor 'arrow', ->
+    if @get('last')
+      if parseInt(@get('current')) > parseInt(@get('last')) then 'icon-arrow-up' else 'icon-arrow-down'
 
   onData: (data) ->
     if @graph
