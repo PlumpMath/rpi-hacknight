@@ -28,8 +28,10 @@ class TimedRequest
     time = block.call
     fi = Time.new.to_ms
     time = if time.is_a? Numeric then time else fi - st end
-    send_event(name, { current: time, last: @@req_times[name] || 0 })
-    @@req_times[name] = time
+    @@req_times[name] ||= (1..10).map { |i| {x: i, y: 0} }
+    @@req_times[name].shift
+    @@req_times[name] << {x: @@req_times[name].last[:x] + 1, y: time}
+    send_event(name, points: @@req_times[name])
   end
 
   def self.get(name, url)
